@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="A guided historical and biblical introduction to the Christian creeds, showing how the church answered errors about God and Christ from Scripture." />
+<title>The Christian Creeds — Why the Church Had to Say More</title>
+<style>
+  :root{
+    --bg:#efe8db;
+    --paper:#fffdf8;
+    --paper2:#f8f2e7;
+    --ink:#1e2630;
+    --muted:#66717c;
+    --navy:#18324a;
+    --navy2:#254b68;
+    --gold:#b38a43;
+    --gold-soft:#ead9b8;
+    --red:#7b342f;
+    --red-soft:#f4e6e2;
+    --green:#385c4a;
+    --green-soft:#e7f0ea;
+    --border:#d9cbb5;
+    --shadow:0 16px 40px rgba(37,31,24,.11);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family: Georgia, "Times New Roman", serif;
+    color:var(--ink);
+    background:
+      radial-gradient(circle at top left, rgba(179,138,67,.12), transparent 32rem),
+      linear-gradient(180deg,#f6f0e6 0%,#eae1d3 100%);
+  }
+
+  button{font:inherit}
+
+  .wrap{
+    width:min(1160px,94vw);
+    margin:0 auto;
+    padding:34px 0 70px;
+  }
+
+  header{
+    text-align:center;
+    padding:14px 18px 4px;
+  }
+
+  .eyebrow{
+    display:inline-block;
+    text-transform:uppercase;
+    letter-spacing:.16em;
+    font-size:.75rem;
+    font-weight:700;
+    color:var(--gold);
+    margin-bottom:13px;
+  }
+
+  h1{
+    margin:0;
+    font-size:clamp(2.55rem,6vw,5rem);
+    line-height:.96;
+    color:var(--navy);
+    letter-spacing:-.035em;
+    cursor:pointer;
+  }
+
+  .subtitle{
+    max-width:850px;
+    margin:16px auto 0;
+    color:#4d5a65;
+    font-size:clamp(1.08rem,2vw,1.45rem);
+    line-height:1.5;
+  }
+
+  .home-card,.panel{
+    width:min(1000px,96vw);
+    margin:34px auto 0;
+    background:rgba(255,253,248,.95);
+    border:1px solid var(--border);
+    border-radius:24px;
+    box-shadow:var(--shadow);
+  }
+
+  .home-card{padding:36px 34px 40px}
+  .panel{display:none;padding:30px 30px 36px}
+  .panel.active{display:block}
+
+  .prompt{
+    display:inline-block;
+    padding:7px 12px;
+    border-radius:999px;
+    font-size:.76rem;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    font-weight:700;
+    color:var(--navy2);
+    background:#edf2f5;
+    border:1px solid #cedae2;
+  }
+
+  .lede{
+    font-size:1.18rem;
+    line-height:1.72;
+    color:#36434f;
+    max-width:850px;
+    margin:18px auto 0;
+  }
+
+  .thesis{
+    margin:26px 0 8px;
+    padding:22px 24px;
+    background:linear-gradient(135deg,#f4ead7,#fbf6ec);
+    border:1px solid var(--gold-soft);
+    border-left:5px solid var(--gold);
+    border-radius:14px;
+    line-height:1.65;
+    font-size:1.08rem;
+  }
+
+  .thesis strong{color:var(--navy)}
+
+  .path-title{
+    text-align:center;
+    color:var(--navy);
+    font-size:1.45rem;
+    margin:34px 0 18px;
+  }
+
+  .path{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+  }
+
+  .stage-card{
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:16px 14px;
+    background:#fff;
+    text-align:left;
+    min-height:145px;
+  }
+
+  .stage-card .num{
+    font-size:.74rem;
+    color:var(--gold);
+    font-weight:700;
+    letter-spacing:.07em;
+    text-transform:uppercase;
+  }
+
+  .stage-card h3{
+    margin:7px 0 7px;
+    color:var(--navy);
+    font-size:1.08rem;
+  }
+
+  .stage-card p{
+    margin:0;
+    color:var(--muted);
+    font-size:.91rem;
+    line-height:1.45;
+  }
+
+  .start-wrap{text-align:center;margin-top:28px}
+
+  .primary,.next-button,.back-button,.home-button{
+    border:0;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.15s ease;
+    font-weight:700;
+  }
+
+  .primary,.next-button{
+    background:var(--navy);
+    color:white;
+    padding:13px 18px;
+    box-shadow:0 7px 18px rgba(24,50,74,.16);
+  }
+
+  .primary:hover,.next-button:hover{background:var(--navy2);transform:translateY(-1px)}
+
+  .top-actions{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:20px;
+  }
+
+  .back-button,.home-button{
+    padding:9px 12px;
+    background:var(--paper2);
+    border:1px solid var(--border);
+    color:var(--navy);
+  }
+
+  .back-button:hover,.home-button:hover{background:#f1e8d8}
+
+  .stage-label{
+    font-size:.75rem;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:var(--gold);
+    margin-bottom:7px;
+  }
+
+  .panel h2{
+    color:var(--navy);
+    font-size:clamp(2rem,4vw,3rem);
+    margin:0 0 9px;
+    line-height:1.08;
+  }
+
+  .panel .question{
+    font-size:1.27rem;
+    line-height:1.45;
+    color:#40515f;
+    margin:0 0 22px;
+    font-style:italic;
+  }
+
+  .columns{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    margin:20px 0;
+  }
+
+  .box{
+    padding:20px 20px 21px;
+    border-radius:16px;
+    border:1px solid var(--border);
+    background:white;
+  }
+
+  .box h3{margin:0 0 9px;font-size:1.15rem}
+  .box p,.box li{color:#4f5c67;line-height:1.6}
+  .box ul{margin:8px 0 0;padding-left:20px}
+
+  .challenge{background:var(--red-soft);border-color:#e4c3bb}
+  .challenge h3{color:var(--red)}
+  .reply{background:var(--green-soft);border-color:#c7d9ce}
+  .reply h3{color:var(--green)}
+
+  .scripture{
+    margin:18px 0;
+    padding:18px 20px;
+    background:#edf2f5;
+    border-left:4px solid var(--navy2);
+    border-radius:12px;
+    line-height:1.65;
+    color:#3d4b56;
+  }
+
+  .scripture strong{color:var(--navy)}
+
+  .creed{
+    margin:20px 0;
+    padding:22px 24px;
+    border:1px solid var(--gold-soft);
+    background:#fbf5e9;
+    border-radius:16px;
+  }
+
+  .creed h3{color:#725522;margin:0 0 10px}
+  .creed p{margin:0;color:#514936;line-height:1.7}
+
+  .creed-text{
+    margin-top:16px;
+    padding:18px 20px;
+    background:#fffdf8;
+    border:1px solid #e3d5ba;
+    border-radius:12px;
+    color:#3f3a31;
+    line-height:1.78;
+  }
+
+  .creed-text p{margin:0 0 12px}
+  .creed-text p:last-child{margin-bottom:0}
+
+  details.creed-details{
+    margin-top:16px;
+    border-top:1px solid #dfd0b3;
+    padding-top:14px;
+  }
+
+  details.creed-details summary{
+    cursor:pointer;
+    color:var(--navy);
+    font-weight:700;
+    list-style:none;
+  }
+
+  details.creed-details summary::-webkit-details-marker{display:none}
+  details.creed-details summary::before{content:'＋ ';color:var(--gold);font-weight:700}
+  details.creed-details[open] summary::before{content:'− '}
+
+  .source-note{
+    margin-top:12px;
+    color:#777064;
+    font-size:.86rem;
+    line-height:1.5;
+  }
+
+  .source-note a{color:var(--navy2)}
+
+  .canon-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:14px;
+    margin:18px 0;
+  }
+
+  .canon{
+    border:1px solid #d9cbb5;
+    background:#fff;
+    border-radius:14px;
+    padding:17px 18px;
+  }
+
+  .canon h3{margin:0 0 8px;color:var(--navy);font-size:1.02rem}
+  .canon p{margin:0;color:#4f5c67;line-height:1.58;font-size:.95rem}
+
+  .keyline{
+    margin:19px 0;
+    text-align:center;
+    color:var(--navy);
+    font-size:1.25rem;
+    font-weight:700;
+  }
+
+  .next-card{
+    margin-top:24px;
+    padding:20px;
+    border-radius:16px;
+    background:#f8f4ec;
+    border:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+  }
+
+  .next-card p{margin:0;line-height:1.55;color:#4f5c67}
+
+  .progress{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    margin:2px auto 22px;
+    max-width:700px;
+  }
+
+  .progress span{
+    height:5px;
+    flex:1;
+    border-radius:999px;
+    background:#ded5c7;
+  }
+  .progress span.on{background:var(--gold)}
+
+  .mini-note{
+    margin-top:18px;
+    color:#68717a;
+    font-size:.92rem;
+    line-height:1.55;
+  }
+
+  footer{
+    text-align:center;
+    color:#7a746a;
+    margin-top:34px;
+    font-size:.9rem;
+  }
+
+  @media(max-width:830px){
+    .path{grid-template-columns:repeat(2,1fr)}
+  }
+
+  @media(max-width:680px){
+    .wrap{padding-top:22px}
+    .home-card,.panel{padding:25px 20px 29px;border-radius:18px}
+    .columns,.canon-grid{grid-template-columns:1fr}
+    .path{grid-template-columns:1fr}
+    .next-card{align-items:flex-start;flex-direction:column}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">TheChristianCreeds.com</div>
+    <h1 onclick="showHome()">The Christian Creeds</h1>
+    <p class="subtitle">Why did Christians need creeds? Follow the questions that forced the church to say more clearly what Scripture teaches about God and Christ.</p>
+  </header>
+
+  <main id="home" class="home-card">
+    <div class="prompt">The Big Idea</div>
+    <p class="lede">
+      The great Christian creeds did not begin as attempts to invent a more complicated religion. Christians confessed what the apostles taught in Scripture: one God, Jesus Christ his Son, the incarnation, the cross, the resurrection, the Holy Spirit, and the hope of the resurrection. But new teachers repeatedly used familiar Christian words while changing their meaning. Each controversy therefore raised a sharper question: <em>Who exactly is Jesus? How is he related to the Father? Is he truly God? Is he truly man? Is he one person or two? Does he have one nature or two?</em>
+    </p>
+
+    <div class="thesis">
+      <strong>The development is a development of precision.</strong> Heresy presses on one part of the biblical confession; orthodox Christians return to the Word and draw a boundary. The next controversy then presses on another point. The result is a sequence of increasingly precise statements meant to protect the same apostolic faith.
+    </div>
+
+    <h2 class="path-title">Follow the Debate</h2>
+    <div class="path">
+      <div class="stage-card"><div class="num">Stage 1</div><h3>Council of Jerusalem</h3><p>Must a person receive circumcision and keep the Mosaic law in order to be saved?</p></div>
+      <div class="stage-card"><div class="num">Stage 2</div><h3>Gnosticism & Docetism</h3><p>Did the eternal Son really become flesh, suffer, die, and rise bodily?</p></div>
+      <div class="stage-card"><div class="num">Stage 3</div><h3>Adoptionism</h3><p>Was Jesus merely a man who later became divine or was adopted as Son?</p></div>
+      <div class="stage-card"><div class="num">Stage 4</div><h3>Modalism</h3><p>Are Father, Son, and Spirit merely three modes of one divine person?</p></div>
+      <div class="stage-card"><div class="num">Stage 5</div><h3>Arianism</h3><p>Is the Son eternal God, or the highest and first creature?</p></div>
+      <div class="stage-card"><div class="num">Stage 6</div><h3>Apollinarianism</h3><p>Did the Son assume a complete human nature, including a human rational soul?</p></div>
+      <div class="stage-card"><div class="num">Stage 7</div><h3>Nestorian Controversy</h3><p>Does distinguishing two natures divide Christ into two persons?</p></div>
+      <div class="stage-card"><div class="num">Stage 8</div><h3>Eutyches & One-Nature Error</h3><p>Does affirming one person require collapsing Christ's humanity and deity into one nature?</p></div>
+      <div class="stage-card"><div class="num">Stage 9</div><h3>Chalcedonian Clarity</h3><p>One divine person, truly God and truly man, in two complete natures.</p></div>
+      <div class="stage-card"><div class="num">Stage 10</div><h3>Council of Orange</h3><p>If salvation is by grace, does even the good use of the human will depend upon God’s prior grace?</p></div>
+    </div>
+
+    <div class="start-wrap">
+      <button class="primary" onclick="showPanel('jerusalem')">Begin with the first council →</button>
+    </div>
+
+    <p class="mini-note">
+      Historical note: the Apostles' Creed was not drafted by a single council as a one-time answer to Gnosticism. It grew from the early church's baptismal confession. Its emphases on the Creator, Christ's real birth and suffering, and the resurrection of the body are especially important in the anti-Gnostic setting.
+    </p>
+  </main>
+
+  <section id="panel-jerusalem" class="panel">
+    <div class="top-actions"><button class="back-button" onclick="showHome()">← Home</button><button class="home-button" onclick="showPanel('gnosticism')">Next Challenge →</button></div>
+    <div class="stage-label">Stage 1 — The Apostolic Council</div>
+    <h2>The Council of Jerusalem, c. AD 49–50</h2>
+    <p class="question">Must a person receive circumcision and keep the law of Moses in order to be saved?</p>
+
+    <div class="columns">
+      <div class="box challenge"><h3>The Challenge</h3><p>Acts 15 records the first great doctrinal controversy faced by the apostolic church. Certain teachers told Gentile believers, “Except ye be circumcised after the manner of Moses, ye cannot be saved” (Acts 15:1). The issue was therefore explicitly about salvation: must a Gentile receive the covenant sign — the sacramental rite of circumcision — and place himself under the Mosaic law in order to be saved?</p></div>
+      <div class="box reply"><h3>The Apostolic Answer</h3><p>No. Peter rejects the idea that salvation comes through bearing the Mosaic yoke and declares, “through the grace of the Lord Jesus Christ we shall be saved” (Acts 15:11). James agrees that Gentile converts are not to be burdened with circumcision as a condition of justification or salvation.</p></div>
+    </div>
+
+    <div class="scripture"><strong>Read the council in Scripture:</strong> Acts 15:1–29. Pay particular attention to verses 1, 5, 10–11, 19–20, and 28–29. The controversy begins with the claim that circumcision is necessary for salvation; the apostolic answer is that salvation is through the grace of the Lord Jesus Christ.</div>
+
+    <div class="creed">
+      <h3>The Principle Established at Jerusalem</h3>
+      <p>Circumcision was the covenant sign given to Abraham and, in Reformed sacramental language, a sacrament of the old covenant administration. Yet the apostles refused to make reception of that sign a condition of salvation. The sign could not save. Christ saves.</p>
+      <div class="creed-text">
+        <p><strong>Applied more generally:</strong> no sacrament saves merely by being received. Baptism and the Lord’s Supper are holy signs and seals appointed by Christ, but they do not replace Christ or add another ground of salvation. We are saved by Christ alone, by his grace, not by sacramental performance.</p>
+        <p>The sacrament points away from itself to the saving work of Christ. To make the sacrament itself a condition or cause of salvation would repeat the basic mistake confronted in Acts 15: placing a covenant rite where Christ alone belongs.</p>
+      </div>
+    </div>
+
+    <div class="thesis"><strong>The first council sets a pattern for what follows.</strong> A controversy arises. The apostles and elders examine the matter in light of God’s revealed work and Word. They reject an error that obscures the sufficiency of Christ and state the truth more clearly for the churches.</div>
+
+    <p class="keyline">The sacrament does not save. Christ saves.</p>
+
+    <div class="next-card"><p><strong>The next question concerns Christ himself:</strong> who is this Savior? Did the eternal Son truly become flesh, or did he only appear to be human?</p><button class="next-button" onclick="showPanel('gnosticism')">Gnosticism & Docetism →</button></div>
+  </section>
+
+  <section id="panel-gnosticism" class="panel">
+    <div class="top-actions"><button class="back-button" onclick="showPanel('jerusalem')">← Jerusalem</button><button class="home-button" onclick="showPanel('apostles')">The Creed →</button></div>
+    <div class="progress"><span class="on"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="stage-label">Challenge 1</div>
+    <h2>Gnosticism and Docetism</h2>
+    <p class="question">What if spirit is good, matter is evil, and the divine Christ only seemed to become a real man?</p>
+    <div class="columns">
+      <div class="box challenge"><h3>The Challenge</h3><p>Many Gnostic systems sharply separated the highest divine reality from the material world. Some denied that the true Christ had genuinely taken human flesh. Docetic forms of the error treated Christ's bodily life and suffering as an appearance rather than a true incarnation.</p></div>
+      <div class="box reply"><h3>The Biblical Reply</h3><p>The God of redemption is the Creator. The eternal Word truly became flesh. Jesus was born, touched, suffered, died, was buried, and rose. Salvation does not consist in escaping God's creation as though matter were intrinsically evil, but in the redemption of the whole person.</p></div>
+    </div>
+    <div class="scripture"><strong>Scripture to examine:</strong> Genesis 1:1, 31; John 1:1–3, 14; Luke 24:39; 1 John 1:1–3; 1 John 4:2–3; 1 Corinthians 15:3–8, 42–44.</div>
+    <div class="next-card"><p><strong>Now ask:</strong> How did the church's basic baptismal confession guard these truths in memorable form?</p><button class="next-button" onclick="showPanel('apostles')">Read the Apostles' Creed →</button></div>
+  </section>
+
+  <section id="panel-apostles" class="panel">
+    <div class="top-actions"><button class="back-button" onclick="showPanel('gnosticism')">← Challenge</button><button class="home-button" onclick="showHome()">Home</button></div>
+    <div class="progress"><span class="on"></span><span class="on"></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="stage-label">Creedal Reply 1</div>
+    <h2>The Apostles' Creed</h2>
+    <p class="question">The Christian story happens in the real world God made.</p>
+    <div class="creed">
+      <h3>The Apostles’ Creed — Received Western Form</h3>
+      <p>Notice how concrete the confession is: creation, birth, suffering, burial, bodily resurrection, and final resurrection. These are precisely the kinds of claims that resist a merely spiritual or docetic Christianity.</p>
+      <details class="creed-details" open>
+        <summary>Read the full Apostles’ Creed</summary>
+        <div class="creed-text">
+          <p>I believe in God the Father Almighty, Maker of heaven and earth;</p>
+          <p>And in Jesus Christ his only Son our Lord; who was conceived by the Holy Ghost, born of the Virgin Mary; suffered under Pontius Pilate, was crucified, dead, and buried; he descended into hell; the third day he rose again from the dead; he ascended into heaven, and sitteth on the right hand of God the Father Almighty; from thence he shall come to judge the quick and the dead.</p>
+          <p>I believe in the Holy Ghost; the holy catholic Church; the communion of saints; the forgiveness of sins; the resurrection of the body; and the life everlasting. Amen.</p>
+        </div>
+      </details>
+      <details class="creed-details">
+        <summary>Compare the older Roman Symbol</summary>
+        <div class="creed-text">
+          <p>I believe in God the Father Almighty;</p>
+          <p>And in Christ Jesus, his only-begotten Son, our Lord, who was born of the Holy Ghost and of Mary the Virgin, who was crucified under Pontius Pilate and buried; on the third day he rose from the dead, ascended into heaven, sitteth on the right hand of the Father, from whence he shall come to judge the quick and the dead;</p>
+          <p>And in the Holy Ghost, the holy Church, the remission of sins, the resurrection of the flesh.</p>
+        </div>
+      </details>
+      <div class="source-note">The received Apostles’ Creed is later than the Old Roman Symbol. Texts are presented in a traditional English form; compare Philip Schaff, <em>Creeds of Christendom</em>, at <a href="https://www.ccel.org/creeds/apostles.creed.html" target="_blank" rel="noopener">CCEL</a>.</div>
+    </div>
+    <p class="keyline">Christianity is not salvation from creation. It is the Creator's redemption of creation.</p>
+    <div class="box"><h3>But a new question appears</h3><p>If Jesus really is a man, perhaps he began as an ordinary man and only later received divine power or status. Could “Son of God” describe something Jesus <em>became</em> rather than who he eternally is?</p></div>
+    <div class="next-card"><p><strong>Next challenge:</strong> Jesus becomes divine.</p><button class="next-button" onclick="showPanel('adoptionism')">Dynamic Monarchianism →</button></div>
+  </section>
+
+  <section id="panel-adoptionism" class="panel">
+    <div class="top-actions"><button class="back-button" onclick="showPanel('apostles')">← Previous</button><button class="home-button" onclick="showHome()">Home</button></div>
+    <div class="progress"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="stage-label">Challenge 2</div>
+    <h2>Dynamic Monarchianism / Adoptionism</h2>
+    <p class="question">Was Jesus a merely human person who was empowered by God and became God's Son in a special sense?</p>
+    <div class="columns">
+      <div class="box challenge"><h3>The Challenge</h3><p>Dynamic monarchianism protected the oneness of God by treating Jesus as a man uniquely endowed with divine power. In adoptionist versions, Jesus receives a special filial status rather than being the eternal divine Son who came into the world.</p></div>
+      <div class="box reply"><h3>The Biblical Reply</h3><p>The Son does not begin at Bethlehem, his baptism, or his resurrection. He is the Word who already was with God and was God, through whom all things were made. He comes from the Father into the world rather than rising from mere humanity into deity.</p></div>
+    </div>
+    <div class="scripture"><strong>Scripture to examine:</strong> John 1:1–3, 14; John 8:58; John 17:5; Philippians 2:5–8; Colossians 1:15–17; Hebrews 1:1–3.</div>
+    <div class="box"><h3>The pressure now shifts</h3><p>If the Father is God and the Son is God, have Christians confessed two gods? One proposed solution was to say that Father and Son are not distinct persons at all.</p></div>
+    <div class="next-card"><p><strong>Next challenge:</strong> perhaps Father, Son, and Spirit are simply different manifestations of one person.</p><button class="next-button" onclick="showPanel('modalism')">Modalistic Monarchianism →</button></div>
+  </section>
+
+  <section id="panel-modalism" class="panel">
+    <div class="top-actions"><button class="back-button" onclick="showPanel('adoptionism')">← Previous</button><button class="home-button" onclick="showHome()">Home</button></div>
+    <div class="progress"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span><span></span><span></span></div>
+    <div class="stage-label">Challenge 3</div>
+    <h2>Modalistic Monarchianism</h2>
+    <p class="question">Is the one God a single person who appears sometimes as Father, sometimes as Son, and sometimes as Holy Spirit?</p>
+    <div class="columns">
+      <div class="box challenge"><h3>The Challenge</h3><p>Modalism preserves divine unity by denying a real personal distinction between Father, Son, and Spirit. The names become modes, roles, or manifestations of the one divine person.</p></div>
+      <div class="box reply"><h3>The Biblical Reply</h3><p>Scripture presents one God, yet Father, Son, and Holy Spirit are personally distinguished. The Son is with the Father, speaks to the Father, is sent by the Father, and promises another Helper. At Jesus' baptism the Son is baptized, the Spirit descends, and the Father's voice is heard.</p></div>
+    </div>
+    <div class="scripture"><strong>Scripture to examine:</strong> Matthew 3:16–17; Matthew 28:19; John 1:1–2; John 14:16–17; John 17:1–5; 2 Corinthians 13:14.</div>
+    <div class="box"><h3>But distinction creates another question</h3><p>If the Son is distinct from the Father, perhaps he is subordinate because he is not truly eternal God. Arius would make this move: the Son is above creation, but is himself created.</p></div>
+    <div class="next-card"><p><strong>Next challenge:</strong> Jesus is not a man who becomes God; instead, he is the first and greatest created being.</p><button class="next-button" onclick="showPanel('arianism')">Arianism →</button></div>
+  </section>
+
+  <section id="panel-arianism" class="panel">
+    <div class="top-actions"><button class="back-button" onclick="showPanel('modalism')">← Previous</button><button class="home-button" onclick="showHome()">Home</button></div>
+    <div class="progress"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div>
+    <div class="stage-label">Challenge 4</div>
+    <h2>Arianism</h2>
+    <p class="question">What if the Son existed before the world and made all other things, but was himself the first creature?</p>
+    <div class="columns">
+      <div class="box challenge"><h3>The Challenge</h3><p>Arius distinguished the Son from the Father but denied that the Son shared the Father's eternal divine being. The Son was uniquely exalted, but there was, in Arian logic, a point at which the Son did not exist.</p></div>
+      <div class="box reply"><h3>The Biblical Reply</h3><p>Everything that came into being came into being through the Word. The Son is not in the class of things made. He possesses divine glory with the Father before the world existed, bears the divine name, receives worship, and is the exact representation of God's being.</p></div>
+    </div>
+    <div class="scripture"><strong>Scripture to examine:</strong> John 1:1–3; John 5:18–23; John 8:58; John 17:5; Colossians 1:16–17; Hebrews 1:3, 6, 8–12.</div>
+    <div class="creed">
+      <h3>The Nicene Creed — Nicaea, AD 325</h3>
+      <p>The Nicene fathers confessed the Son as <strong>God from God, Light from Light, true God from true God, begotten not made, of one substance with the Father</strong>. The original 325 creed ends briefly with the Holy Spirit and then adds explicit anathemas against the central Arian claims.</p>
+      <details class="creed-details" open>
+        <summary>Read the full Creed of Nicaea (325)</summary>
+        <div class="creed-text">
+          <p>We believe in one God, the Father Almighty, Maker of all things visible and invisible.</p>
+          <p>And in one Lord Jesus Christ, the Son of God, begotten of the Father, the only-begotten; that is, of the essence of the Father, God of God, Light of Light, very God of very God, begotten, not made, being of one substance with the Father; by whom all things were made, both in heaven and on earth; who for us men, and for our salvation, came down and was incarnate and was made man; he suffered, and the third day he rose again, ascended into heaven; from thence he shall come to judge the quick and the dead.</p>
+          <p>And in the Holy Ghost.</p>
+          <p><strong>And those who say, “There was a time when he was not,” and “He was not before he was made,” and “He was made out of nothing,” or “He is of another substance or essence,” or “The Son of God is created,” or “changeable,” or “alterable”—they are condemned by the holy catholic and apostolic Church.</strong></p>
+        </div>
+      </details>
+      <div class="source-note">Historical English text follows the traditional Schaff translation of the 325 form, including its anti-Arian anathemas.</div>
+    </div>
+    <p class="keyline">Not “Jesus became God.” Not “Jesus is the highest creature.” The eternal Son is truly God.</p>
+    <div class="next-card"><p><strong>Next question:</strong> If the divine Son truly became man, how complete was the humanity he assumed?</p><button class="next-button" onclick="showPanel('apollinaris')">Apollinarianism →</button></div>
+  </section>
+
+  <section id="panel-apollinaris" class="panel">
+    <div class="top-actions"><button class="back-button" onclick="showPanel('arianism')">← Previous</button><button class="home-button" onclick="showHome()">Home</button></div>
+    <div class="progress"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></div>
+    <div class="stage-label">Challenge 5</div>
+    <h2>Apollinarianism</h2>
+    <p class="question">Could the divine Word take the place of a human rational soul or mind in Jesus?</p>
+    <div class="columns">
+      <div class="box challenge"><h3>The Challenge</h3><p>Apollinaris strongly defended the unity of Christ, but did so at the expense of complete humanity. In the classic account of his teaching, the divine Logos supplied what would ordinarily be the rational principle in a human being.</p></div>
+      <div class="box reply"><h3>The Biblical Reply</h3><p>Christ does not merely wear a human body. He assumes our humanity. He grows, learns, hungers, thirsts, suffers, obeys, wills, and possesses a human soul. What is not assumed is not healed: salvation requires a Savior who is truly like us, yet without sin.</p></div>
+    </div>
+    <div class="scripture"><strong>Scripture to examine:</strong> Luke 2:40, 52; Matthew 26:38–39; John 11:33; Hebrews 2:14–18; Hebrews 4:15; Hebrews 5:7–9.</div>
+    <div class="creed">
+      <h3>The Niceno-Constantinopolitan Creed — AD 381</h3>
+      <p>The Nicene faith was reaffirmed and the confession of the Holy Spirit was made much fuller. This is the form commonly called the “Nicene Creed” in Christian worship today. The text below gives the Eastern form, without the later Western <em>filioque</em> addition.</p>
+      <details class="creed-details" open>
+        <summary>Read the full Creed of Constantinople (381)</summary>
+        <div class="creed-text">
+          <p>We believe in one God, the Father Almighty, Maker of heaven and earth, and of all things visible and invisible.</p>
+          <p>And in one Lord Jesus Christ, the only-begotten Son of God, begotten of the Father before all worlds; Light of Light, very God of very God; begotten, not made, being of one substance with the Father; by whom all things were made; who for us men, and for our salvation, came down from heaven, and was incarnate by the Holy Ghost of the Virgin Mary, and was made man; he was crucified for us under Pontius Pilate, and suffered, and was buried; and the third day he rose again, according to the Scriptures; and ascended into heaven, and sitteth on the right hand of the Father; and he shall come again, with glory, to judge the quick and the dead; whose kingdom shall have no end.</p>
+          <p>And in the Holy Ghost, the Lord and Giver of life, who proceedeth from the Father; who with the Father and the Son together is worshiped and glorified; who spake by the prophets.</p>
+          <p>In one holy catholic and apostolic Church; we acknowledge one baptism for the remission of sins; we look for the resurrection of the dead, and the life of the world to come. Amen.</p>
+        </div>
+      </details>
+      <div class="source-note">The 381 form is distinguished here from the original 325 creed; the later Western phrase “and the Son” (<em>filioque</em>) is intentionally not inserted into the historical 381 text.</div>
+    </div>
+    <div class="next-card"><p><strong>Now the problem becomes more exact:</strong> if Christ has full deity and full humanity, how are the two related in the one Christ?</p><button class="next-button" onclick="showPanel('nestorius')">Nestorian Controversy →</button></div>
+  </section>
+
+  <section id="panel-nestorius" class="panel">
+    <div class="top-actions"><button class="back-button" onclick="showPanel('apollinaris')">← Previous</button><button class="home-button" onclick="showHome()">Home</button></div>
+    <div class="progress"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div>
+    <div class="stage-label">Challenge 6</div>
+    <h2>The Nestorian Controversy</h2>
+    <p class="question">If Christ is fully divine and fully human, have we divided him into two acting subjects — effectively two persons?</p>
+    <div class="columns">
+      <div class="box challenge"><h3>The Challenge</h3><p>The controversy surrounding Nestorius exposed the danger of speaking about Christ's divinity and humanity in a way that divided the one Christ. The issue was not whether deity and humanity are distinct, but whether the distinction destroys the unity of the person.</p></div>
+      <div class="box reply"><h3>The Biblical Reply</h3><p>The one who is born, suffers, dies, rises, and reigns is the same Lord Jesus Christ. The divine Son does not join himself to an independently existing human person. The eternal person of the Son assumes human nature.</p></div>
+    </div>
+    <div class="scripture"><strong>Scripture to examine:</strong> John 1:14; Galatians 4:4; Philippians 2:6–8; 1 Corinthians 2:8; Acts 20:28; Hebrews 2:14.</div>
+    <div class="creed">
+      <h3>Ephesus, AD 431 — No New Creed</h3>
+      <p>Ephesus did <strong>not</strong> compose a new ecumenical creed to replace Nicaea. It defended the Nicene faith and the personal unity of Christ in the controversy surrounding Nestorius. Its use of <strong>Theotokos</strong> (“God-bearer”) was Christological: the person born of Mary is none other than the eternal Son. Mary does not originate the divine nature; she bears the person who is God the Son incarnate.</p>
+      <div class="creed-text"><p><strong>Why this belongs in the chain:</strong> Nicaea answers <em>what is the Son?</em> — truly God, not a creature. Ephesus presses the next question: <em>who is the subject of the incarnate life?</em> — one and the same Son, not two Christs acting side by side.</p></div>
+    </div>
+    <p class="keyline">Two complete natures must not become two Christs.</p>
+    <div class="next-card"><p><strong>But an opposite danger follows:</strong> in protecting the unity of the person, could the two natures be blended or reduced to one?</p><button class="next-button" onclick="showPanel('eutyches')">One-Nature Error →</button></div>
+  </section>
+
+  <section id="panel-eutyches" class="panel">
+    <div class="top-actions"><button class="back-button" onclick="showPanel('nestorius')">← Previous</button><button class="home-button" onclick="showHome()">Home</button></div>
+    <div class="progress"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div>
+    <div class="stage-label">Challenge 7 and Creedal Synthesis</div>
+    <h2>Eutyches, Monophysite Controversy, and Chalcedon</h2>
+    <p class="question">Does one person mean one nature — or can the one Christ remain fully God and fully man?</p>
+    <div class="columns">
+      <div class="box challenge"><h3>The Opposite Error</h3><p>After the Nestorian controversy, an opposite tendency threatened to collapse Christ's divinity and humanity together. Eutyches became associated with a “one-nature” Christology in which Christ's humanity no longer remained complete and distinct after the union.</p></div>
+      <div class="box reply"><h3>The Biblical Boundary</h3><p>The one Lord Jesus Christ is truly divine and truly human. The incarnation neither divides him into two persons nor changes deity into humanity, humanity into deity, or both into a third kind of thing.</p></div>
+    </div>
+    <div class="scripture"><strong>Scripture to examine:</strong> John 1:1, 14; Romans 1:3–4; Romans 9:5; Philippians 2:6–8; 1 Timothy 2:5; Hebrews 2:17.</div>
+    <div class="creed">
+      <h3>The Definition of Chalcedon — AD 451</h3>
+      <p>Chalcedon draws both boundaries at once: one person, yet two complete natures. The famous four adverbs deny both confusion and division.</p>
+      <details class="creed-details" open>
+        <summary>Read the Definition of Chalcedon</summary>
+        <div class="creed-text">
+          <p>We, then, following the holy Fathers, all with one consent, teach men to confess one and the same Son, our Lord Jesus Christ, the same perfect in Godhead and also perfect in manhood; truly God and truly man, of a reasonable soul and body; consubstantial with the Father according to the Godhead, and consubstantial with us according to the manhood; in all things like unto us, without sin; begotten before all ages of the Father according to the Godhead, and in these latter days, for us and for our salvation, born of the Virgin Mary, the Mother of God, according to the manhood;</p>
+          <p>One and the same Christ, Son, Lord, Only-begotten, to be acknowledged <strong>in two natures, inconfusedly, unchangeably, indivisibly, inseparably</strong>; the distinction of natures being by no means taken away by the union, but rather the property of each nature being preserved, and concurring in one Person and one Subsistence, not parted or divided into two persons, but one and the same Son and Only-begotten, God the Word, the Lord Jesus Christ; as the prophets from the beginning have declared concerning him, and the Lord Jesus Christ himself has taught us, and the Creed of the holy Fathers has handed down to us.</p>
+        </div>
+      </details>
+      <div class="source-note">Traditional English text of the Chalcedonian Definition, following the public-domain Schaff/CCEL form.</div>
+    </div>
+    <div class="columns">
+      <div class="box"><h3>Against Nestorian division</h3><p><strong>One person.</strong> The divine and human are not two Sons, two Lords, or two independent personal subjects.</p></div>
+      <div class="box"><h3>Against Eutychian confusion</h3><p><strong>Two natures.</strong> Christ's deity remains deity and his humanity remains humanity, united in the one person of the Son.</p></div>
+    </div>
+    <p class="keyline">One person. Two natures. Truly God. Truly man.</p>
+    <div class="thesis"><strong>This is why the creeds matter.</strong> Each carefully chosen phrase closes a door through which the biblical teaching about God or Christ had been distorted. Learning the heresies makes the creeds easier to understand because you can see the question each phrase is answering.</div>
+    <div class="next-card"><p><strong>The Christological question is now sharply stated.</strong> But another ancient controversy asks how fallen sinners ever come to confess this Christ: does the saving movement begin in free will, or in God’s prior grace?</p><button class="next-button" onclick="showPanel('orange')">Council of Orange →</button></div>
+    <p class="mini-note">Terminology note: modern Oriental Orthodox churches reject the claim that their own miaphysite Christology is simply Eutychian Monophysitism. This page uses “one-nature error” specifically for the Eutychian position condemned at Chalcedon, not as a blanket description of contemporary Oriental Orthodox theology.</p>
+  </section>
+
+  <section id="panel-orange" class="panel">
+    <div class="top-actions"><button class="back-button" onclick="showPanel('eutyches')">← Chalcedon</button><button class="home-button" onclick="showHome()">Home</button></div>
+    <div class="stage-label">Stage 9 — Grace and the Will</div>
+    <h2>The Second Council of Orange, AD 529</h2>
+    <p class="question">Does fallen man initiate his return to God by free will, with grace arriving afterward — or does God’s grace precede and produce even the good movement of the will?</p>
+
+    <div class="columns">
+      <div class="box challenge"><h3>The Semi-Pelagian Challenge</h3><p>The controversy was no longer mainly about the person of Christ. The question was the beginning of salvation. Could fallen man make the first good movement toward God — the first desire, prayer, act of faith, or choice — from his natural free will, and then receive grace?</p></div>
+      <div class="box reply"><h3>Orange’s Answer</h3><p>No. Orange teaches that grace does not merely assist a spiritually neutral will after it has chosen God. Divine grace precedes the saving choice, awakens faith and love, prepares the will, and enables the sinner to will and do the good.</p></div>
+    </div>
+
+    <div class="scripture"><strong>Scripture emphasized by the council:</strong> John 6:44; John 15:5; Romans 5:5; 1 Corinthians 4:7; 1 Corinthians 12:3; 2 Corinthians 3:5; Philippians 1:6, 29; Philippians 2:13; Ephesians 2:8.</div>
+
+    <div class="creed">
+      <h3>What Orange Says About God’s Sovereignty and Free Will</h3>
+      <p>Orange is especially useful because it does not treat divine sovereignty and human willing as competitors. When a sinner truly wills what is pleasing to God, he really wills it; yet the good willing itself has been prepared, awakened, and sustained by grace.</p>
+      <div class="canon-grid">
+        <div class="canon"><h3>Canon 4 — Even the Will Comes by Grace</h3><p>God does not merely wait for our will to be cleansed. The council says that even <em>our will to be cleansed</em> comes through the infusion and working of the Holy Spirit, appealing to Philippians 2:13: “God is at work in you, both to will and to work.”</p></div>
+        <div class="canon"><h3>Canon 5 — The Beginning of Faith Is a Gift</h3><p>The beginning of faith and the desire for faith do not belong to us by nature. They come by the inspiration of the Holy Spirit, who turns the will from unbelief to faith and from ungodliness to godliness.</p></div>
+        <div class="canon"><h3>Canon 7 — We Cannot Choose Saving Truth Naturally</h3><p>The council denies that natural powers can form the saving choice or assent to the gospel without the illumination and inspiration of the Holy Spirit.</p></div>
+        <div class="canon"><h3>Canon 23 — God Prepares the Will</h3><p>When people willingly comply with the will of God, Orange says that it is nevertheless God’s will by which what they will is <em>prepared and instructed</em>.</p></div>
+      </div>
+
+      <details class="creed-details" open>
+        <summary>Read key texts from the Council of Orange</summary>
+        <div class="creed-text">
+          <p><strong>Canon 4.</strong> If anyone maintains that God awaits our will to be cleansed from sin, but does not confess that even our will to be cleansed comes to us through the infusion and working of the Holy Spirit, he resists the Holy Spirit himself ... “For God is at work in you, both to will and to work for his good pleasure.”</p>
+          <p><strong>Canon 5.</strong> If anyone says that not only the increase of faith but also its beginning and the very desire for faith ... belongs to us by nature and not by a gift of grace, that is, by the inspiration of the Holy Spirit amending our will and turning it from unbelief to faith and from godlessness to godliness, he is opposed to the teaching of the Apostles.</p>
+          <p><strong>Canon 7.</strong> If anyone affirms that we can form any right opinion or make any right choice which relates to the salvation of eternal life ... through our natural powers without the illumination and inspiration of the Holy Spirit, he is led astray by a heretical spirit.</p>
+          <p><strong>Canon 20.</strong> God does much that is good in a man that the man does not do; but a man does nothing good for which God is not responsible, so as to let him do it.</p>
+          <p><strong>Canon 23.</strong> Men do their own will and not the will of God when they do what displeases him; but when they follow their own will and comply with the will of God, however willingly they do so, yet it is his will by which what they will is both prepared and instructed.</p>
+          <p><strong>Canon 25.</strong> It is wholly a gift of God to love God.... The Spirit ... has poured into our hearts the love of the Father and the Son.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="thesis"><strong>Orange’s central principle:</strong> grace is prior. Fallen free will does not produce the first saving movement and then call grace to its aid. God’s mercy precedes, giving faith, love, right desire, and the ability to will the good. Yet Orange also insists that the renewed person truly acts and wills with the aid and cooperation of Christ.</div>
+
+    <div class="box"><h3>A Necessary Qualification</h3><p>Orange should not be made to say everything later Augustinian or Reformed theology says about predestination. Its conclusion explicitly rejects the idea that God foreordains anyone to evil. Its immediate target is the claim that the first movement toward salvation arises from unaided free will. On that question its language is unmistakably strong: <strong>God takes the initiative even in the good willing of the sinner.</strong></p></div>
+
+    <p class="keyline">We do not first will the good and thereby obtain grace; grace precedes and prepares the will to will the good.</p>
+
+    <div class="next-card"><p><strong>Return to the beginning</strong> and walk the whole chain again: the identity of Christ, the two natures, and finally the sovereign grace by which fallen sinners are brought to faith.</p><button class="next-button" onclick="showHome()">Return Home ↺</button></div>
+    <p class="source-note">For the full 25 canons and conclusion, see the historical text of the <a href="https://www.reformedhistory.com/Content/Councils/Orange2" target="_blank" rel="noopener">Second Council of Orange (529)</a>.</p>
+  </section>
+
+  <footer>theChristiancreeds.com · Learn the controversy. Read the creed. Return to Scripture.</footer>
+</div>
+
+<script>
+const order=['jerusalem','gnosticism','apostles','adoptionism','modalism','arianism','apollinaris','nestorius','eutyches','orange'];
+
+function showHome(){
+  document.getElementById('home').style.display='block';
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function showPanel(name){
+  document.getElementById('home').style.display='none';
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  const panel=document.getElementById('panel-'+name);
+  if(panel){
+    panel.classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+    history.replaceState(null,'','#'+name);
+  }
+}
+
+window.addEventListener('load',()=>{
+  const hash=location.hash.replace('#','');
+  if(order.includes(hash)) showPanel(hash);
+});
+</script>
+</body>
+</html>
