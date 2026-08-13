@@ -436,6 +436,57 @@
     font-size:.9rem;
   }
 
+
+
+  .application-card{
+    cursor:pointer;
+    background:linear-gradient(135deg,#edf2f5,#f8fbfc);
+    border-color:#c9d6df;
+    position:relative;
+  }
+  .application-card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 9px 22px rgba(24,50,74,.10);
+  }
+  .application-card .num{color:var(--navy2)}
+
+  .match-intro{
+    margin:18px 0 24px;
+    padding:18px 20px;
+    background:#f8f4ec;
+    border:1px solid var(--border);
+    border-radius:14px;
+    color:#4f5c67;
+    line-height:1.65;
+  }
+
+  .match-grid{display:grid;gap:14px;margin:22px 0}
+  .match-item{
+    border:1px solid var(--border);
+    border-radius:16px;
+    background:#fff;
+    padding:18px 18px 16px;
+  }
+  .match-item h3{margin:0 0 7px;color:var(--navy);font-size:1.1rem}
+  .match-item p{margin:0 0 13px;color:#4f5c67;line-height:1.55}
+  .match-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .match-row label{font-weight:700;color:var(--navy)}
+  .match-select{
+    flex:1;
+    min-width:250px;
+    padding:10px 12px;
+    border:1px solid #c9c0b2;
+    border-radius:10px;
+    background:#fffdf8;
+    color:var(--ink);
+    font:inherit;
+  }
+  .match-result{font-weight:700;min-width:120px}
+  .match-result.correct{color:var(--green)}
+  .match-result.incorrect{color:var(--red)}
+  .match-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:22px}
+  .score-box{font-weight:700;color:var(--navy);font-size:1.05rem}
+
   @media(max-width:830px){
     .path{grid-template-columns:repeat(2,1fr)}
   }
@@ -462,11 +513,11 @@
     <h2>Believing in Jesus Means Believing in the Biblical Jesus</h2>
 
     <div class="intro-scripture">
-      <strong>In 1 Corinthians 2:2, Paul says "For I determined not to know anything among you except Jesus Christ and Him crucified." What does the Bible say about who Jesus is and why he was crucified?</strong> Christian faith is not merely using the name “Jesus.” It is believing in the Jesus revealed in Scripture and living a life consistent with that faith.
+      <strong>Ephesians 1:13–15 gives us a simple biblical picture of the Christian life:</strong> Christians hear the word of truth, believe in the Lord Jesus, and their faith is made visible in love for the saints. Christian faith is therefore not merely using the name “Jesus.” It is believing in the Jesus revealed in Scripture and living a life consistent with that faith.
     </div>
 
     <div class="intro-copy">
-      <p>There are those who simply do not believe in Jesus. But Scripture also warns about another kind of danger: wolves and heretics who claim the name of Jesus while changing his identity and teaching. They may say that they believe in Jesus, but the “Jesus” they describe is no longer the Jesus revealed in the Bible. They replace the biblical Christ with a Christ of their own imagination.</p>
+      <p>There are those who simply do not believe in Jesus. But Scripture also warns about another kind of danger: wolves and heretics who claim the name of Christ while changing his identity and teaching. They may say that they believe in Jesus, but the “Jesus” they describe is no longer the Jesus revealed in the Bible. They replace the biblical Christ with a Christ of their own imagination.</p>
 
       <p>This problem is not new. The earliest Christians faced teachers who used familiar Christian words while changing their meaning. Some denied that Jesus truly became man. Others taught that he was only a man who later became divine, that he was the highest created being, or that his divine and human natures could not both remain complete in one person.</p>
 
@@ -492,7 +543,6 @@
   </main>
 
   <main id="home" class="home-card" style="display:none">
-    <div class="top-actions"><button class="back-button" onclick="Intro()">← Back to Intro</button></div>
     <div class="prompt">The Biblical Creeds</div>
     <p class="lede">
       The great Christian creeds address false teaching that arose over the centuries. Insofar as the creeds are true, they are the faithful application of the Bible to refute false doctrine and explain the truth about God and Christ. Christians confessed what the apostles taught in Scripture: one God, Jesus Christ his Son, the incarnation, the cross, the resurrection, the Holy Spirit, and the hope of the resurrection. But new teachers repeatedly used familiar Christian words while changing their meaning. That continues to be a hallmark of cults in our day. Each controversy therefore raised sharper questions: <em>Who exactly is Jesus? How is he related to the Father? Is he truly God? Is he truly man? Is he one person or two? Does he have one nature or two? Many, if not all, of the cults that have developed in the United States are simply reviving one of the false teachings already refuted by the creeds, which are grounded in the Bible.</em>
@@ -514,6 +564,7 @@
       <div class="stage-card"><div class="num">Stage 8</div><h3>Eutyches & One-Nature Error</h3><p>Does affirming one person require collapsing Christ's humanity and deity into one nature?</p></div>
       <div class="stage-card"><div class="num">Stage 9</div><h3>Chalcedonian Clarity</h3><p>One divine person, truly God and truly man, in two complete natures.</p></div>
       <div class="stage-card"><div class="num">Stage 10</div><h3>Council of Orange</h3><p>If salvation is by grace, does even the good use of the human will depend upon God’s prior grace?</p></div>
+      <div class="stage-card application-card" onclick="showPanel('application')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){showPanel('application')}"><div class="num">Put It Together</div><h3>Application Today</h3><p>Can you recognize ancient errors when they reappear in modern religious movements?</p></div>
     </div>
 
     <div class="start-wrap">
@@ -526,7 +577,7 @@
   </main>
 
   <section id="panel-jerusalem" class="panel">
-    <div class="top-actions"><button class="back-button" onclick="Intro()">← Home</button><button class="home-button" onclick="Panel('gnosticism')">Next Challenge →</button></div>
+    <div class="top-actions"><button class="back-button" onclick="Home()">← Home</button><button class="home-button" onclick="Panel('gnosticism')">Next Challenge →</button></div>
     <div class="stage-label">Stage 1 — The Apostolic Council</div> 
     <h2>The Council of Jerusalem, c. AD 50.</h3><p>This council gives the inspired pattern for all later councils and is an important part of showing how the New Testament establishes a presbyterian government.</h2>
     <p class="question">Must a person receive circumcision and keep the law of Moses in order to be saved?</p>
@@ -569,7 +620,7 @@
   </section>
 
   <section id="panel-apostles" class="panel">
-    <div class="top-actions"><button class="back-button" onclick="showPanel('gnosticism')">← Challenge</button><button class="home-button" onclick="showIntro()">Home</button></div>
+    <div class="top-actions"><button class="back-button" onclick="showPanel('gnosticism')">← Challenge</button><button class="home-button" onclick="showHome()">Home</button></div>
     <div class="progress"><span class="on"></span><span class="on"></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
     <div class="stage-label">Creedal Reply 1</div>
     <h2>The Apostles' Creed</h2>
@@ -601,7 +652,7 @@
   </section>
 
   <section id="panel-adoptionism" class="panel">
-    <div class="top-actions"><button class="back-button" onclick="showPanel('apostles')">← Previous</button><button class="home-button" onclick="showIntro()">Home</button></div>
+    <div class="top-actions"><button class="back-button" onclick="showPanel('apostles')">← Previous</button><button class="home-button" onclick="showHome()">Home</button></div>
     <div class="progress"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span><span></span><span></span><span></span></div>
     <div class="stage-label">Challenge 2</div>
     <h2>Dynamic Monarchianism / Adoptionism</h2>
@@ -616,7 +667,7 @@
   </section>
 
   <section id="panel-modalism" class="panel">
-    <div class="top-actions"><button class="back-button" onclick="showPanel('adoptionism')">← Previous</button><button class="home-button" onclick="showIntro()">Home</button></div>
+    <div class="top-actions"><button class="back-button" onclick="showPanel('adoptionism')">← Previous</button><button class="home-button" onclick="showHome()">Home</button></div>
     <div class="progress"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span><span></span><span></span></div>
     <div class="stage-label">Challenge 3</div>
     <h2>Modalistic Monarchianism</h2>
@@ -631,7 +682,7 @@
   </section>
 
   <section id="panel-arianism" class="panel">
-    <div class="top-actions"><button class="back-button" onclick="showPanel('modalism')">← Previous</button><button class="home-button" onclick="showIntro()">Home</button></div>
+    <div class="top-actions"><button class="back-button" onclick="showPanel('modalism')">← Previous</button><button class="home-button" onclick="showHome()">Home</button></div>
     <div class="progress"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div>
     <div class="stage-label">Challenge 4</div>
     <h2>Arianism</h2>
@@ -660,7 +711,7 @@
   </section>
 
   <section id="panel-apollinaris" class="panel">
-    <div class="top-actions"><button class="back-button" onclick="showPanel('arianism')">← Previous</button><button class="home-button" onclick="showIntro()">Home</button></div>
+    <div class="top-actions"><button class="back-button" onclick="showPanel('arianism')">← Previous</button><button class="home-button" onclick="showHome()">Home</button></div>
     <div class="progress"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></div>
     <div class="stage-label">Challenge 5</div>
     <h2>Apollinarianism</h2>
@@ -688,7 +739,7 @@
   </section>
 
   <section id="panel-nestorius" class="panel">
-    <div class="top-actions"><button class="back-button" onclick="showPanel('apollinaris')">← Previous</button><button class="home-button" onclick="showIntro()">Home</button></div>
+    <div class="top-actions"><button class="back-button" onclick="showPanel('apollinaris')">← Previous</button><button class="home-button" onclick="showHome()">Home</button></div>
     <div class="progress"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div>
     <div class="stage-label">Challenge 6</div>
     <h2>The Nestorian Controversy</h2>
@@ -708,7 +759,7 @@
   </section>
 
   <section id="panel-eutyches" class="panel">
-    <div class="top-actions"><button class="back-button" onclick="showPanel('nestorius')">← Previous</button><button class="home-button" onclick="showIntro()">Home</button></div>
+    <div class="top-actions"><button class="back-button" onclick="showPanel('nestorius')">← Previous</button><button class="home-button" onclick="showHome()">Home</button></div>
     <div class="progress"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div>
     <div class="stage-label">Challenge 7 and Creedal Synthesis</div>
     <h2>Eutyches, Monophysite Controversy, and Chalcedon</h2>
@@ -740,7 +791,7 @@
   </section>
 
   <section id="panel-orange" class="panel">
-    <div class="top-actions"><button class="back-button" onclick="showPanel('eutyches')">← Chalcedon</button><button class="home-button" onclick="showIntro()">Home</button></div>
+    <div class="top-actions"><button class="back-button" onclick="showPanel('eutyches')">← Chalcedon</button><button class="home-button" onclick="showHome()">Home</button></div>
     <div class="stage-label">Stage 9 — Grace and the Will</div>
     <h2>The Second Council of Orange, AD 529</h2>
     <p class="question">Does fallen man initiate his return to God by free will, with grace arriving afterward — or does God’s grace precede and produce even the good movement of the will?</p>
@@ -781,18 +832,132 @@
 
     <p class="keyline">We do not first will the good and thereby obtain grace; grace precedes and prepares the will to will the good.</p>
 
-    <div class="next-card"><p><strong>Return to the beginning</strong> and walk the whole chain again: the identity of Christ, the two natures, and finally the sovereign grace by which fallen sinners are brought to faith.</p><button class="next-button" onclick="showIntro()">Return Home ↺</button></div>
+    <div class="next-card"><p><strong>Return to the beginning</strong> and walk the whole chain again: the identity of Christ, the two natures, and finally the sovereign grace by which fallen sinners are brought to faith.</p><button class="next-button" onclick="showHome()">Return Home ↺</button></div>
     <p class="source-note">For the full 25 canons and conclusion, see the historical text of the <a href="https://www.reformedhistory.com/Content/Councils/Orange2" target="_blank" rel="noopener">Second Council of Orange (529)</a>.</p>
   </section>
+
+
+  <section id="panel-application" class="panel">
+    <div class="top-actions"><button class="back-button" onclick="showHome()">← The Debate</button><button class="home-button" onclick="showIntro()">Introduction</button></div>
+    <div class="stage-label">Application Today</div>
+    <h2>Can You Spot the Old Heresies in New Forms?</h2>
+    <p class="question">Match each new religious movement with the ancient error that most closely resembles its teaching about God, Christ, or salvation. Learn to see how these movements use the name of Jesus but deny the Bible's teaching about who he is.</p>
+
+    <div class="match-intro">
+      These are <strong>historical analogies</strong>, not claims that every modern movement teaches exactly what an ancient heresy taught. Read the description, remember the earlier challenges, and choose the closest match. Some modern systems combine several older errors or add teachings that have no precise ancient equivalent. They often use a two stage strategy to lure converts: Stage 1: we believe in Jesus; Stage 2: we have additional revelation that supercedes, sets aside, corrects, or reinterprets the Bible. Learn to see through their cunning by applying the Bible to what they teach.
+    </div>
+
+    <div class="match-grid">
+      <div class="match-item" data-answer="arianism">
+        <h3>Jehovah’s Witnesses</h3>
+        <p>Jesus is not eternal Almighty God. He is described as Jehovah’s first creation and as the one through whom the rest of creation came into being.</p>
+        <div class="match-row"><label>Closest match:</label><select class="match-select"><option value="">Choose an earlier error…</option><option value="gnosticism">Gnosticism / Docetism</option><option value="adoptionism">Adoptionism</option><option value="modalism">Modalism</option><option value="arianism">Arianism</option><option value="apollinarianism">Apollinarianism</option><option value="nestorianism">Nestorian-type division</option><option value="eutychianism">Eutychian / one-nature error</option><option value="pelagianism">Pelagian / Semi-Pelagian error</option></select><span class="match-result"></span></div>
+      </div>
+
+      <div class="match-item" data-answer="modalism">
+        <h3>Oneness Pentecostalism</h3>
+        <p>Father, Son, and Holy Spirit are not three distinct divine persons; the one God is revealed as Father, in the Son, and as the Holy Spirit.</p>
+        <div class="match-row"><label>Closest match:</label><select class="match-select"><option value="">Choose an earlier error…</option><option value="gnosticism">Gnosticism / Docetism</option><option value="adoptionism">Adoptionism</option><option value="modalism">Modalism</option><option value="arianism">Arianism</option><option value="apollinarianism">Apollinarianism</option><option value="nestorianism">Nestorian-type division</option><option value="eutychianism">Eutychian / one-nature error</option><option value="pelagianism">Pelagian / Semi-Pelagian error</option></select><span class="match-result"></span></div>
+      </div>
+
+      <div class="match-item" data-answer="gnosticism">
+        <h3>Christian Science</h3>
+        <p>Matter is treated as unreal or illusory, and Jesus’ work is interpreted through a strongly spiritualized view of reality rather than the biblical affirmation of created matter and bodily life.</p>
+        <div class="match-row"><label>Closest match:</label><select class="match-select"><option value="">Choose an earlier error…</option><option value="gnosticism">Gnosticism / Docetism</option><option value="adoptionism">Adoptionism</option><option value="modalism">Modalism</option><option value="arianism">Arianism</option><option value="apollinarianism">Apollinarianism</option><option value="nestorianism">Nestorian-type division</option><option value="eutychianism">Eutychian / one-nature error</option><option value="pelagianism">Pelagian / Semi-Pelagian error</option></select><span class="match-result"></span></div>
+      </div>
+
+      <div class="match-item" data-answer="gnosticism">
+        <h3>Theosophy</h3>
+        <p>Jesus is interpreted through esoteric categories such as initiation, higher spiritual principles, and a “Christ” principle that may be distinguished from the historical man Jesus.</p>
+        <div class="match-row"><label>Closest match:</label><select class="match-select"><option value="">Choose an earlier error…</option><option value="gnosticism">Gnosticism / Docetism</option><option value="adoptionism">Adoptionism</option><option value="modalism">Modalism</option><option value="arianism">Arianism</option><option value="apollinarianism">Apollinarianism</option><option value="nestorianism">Nestorian-type division</option><option value="eutychianism">Eutychian / one-nature error</option><option value="pelagianism">Pelagian / Semi-Pelagian error</option></select><span class="match-result"></span></div>
+      </div>
+
+      <div class="match-item" data-answer="gnosticism">
+        <h3>New Age Jesus</h3>
+        <p>Jesus is often recast as an enlightened teacher, avatar, or bearer of a universal “Christ consciousness” available to others rather than the unique eternal Son incarnate.</p>
+        <div class="match-row"><label>Closest match:</label><select class="match-select"><option value="">Choose an earlier error…</option><option value="gnosticism">Gnosticism / Docetism</option><option value="adoptionism">Adoptionism</option><option value="modalism">Modalism</option><option value="arianism">Arianism</option><option value="apollinarianism">Apollinarianism</option><option value="nestorianism">Nestorian-type division</option><option value="eutychianism">Eutychian / one-nature error</option><option value="pelagianism">Pelagian / Semi-Pelagian error</option></select><span class="match-result"></span></div>
+      </div>
+
+      <div class="match-item" data-answer="adoptionism">
+        <h3>Christadelphians</h3>
+        <p>Jesus is not God and did not personally exist before his birth. He is the uniquely begotten human Son of God, but not the eternal divine Son who came into the world.</p>
+        <div class="match-row"><label>Closest match:</label><select class="match-select"><option value="">Choose an earlier error…</option><option value="gnosticism">Gnosticism / Docetism</option><option value="adoptionism">Adoptionism</option><option value="modalism">Modalism</option><option value="arianism">Arianism</option><option value="apollinarianism">Apollinarianism</option><option value="nestorianism">Nestorian-type division</option><option value="eutychianism">Eutychian / one-nature error</option><option value="pelagianism">Pelagian / Semi-Pelagian error</option></select><span class="match-result"></span></div>
+      </div>
+
+      <div class="match-item" data-answer="adoptionism">
+        <h3>Iglesia ni Cristo</h3>
+        <p>Jesus is confessed as the Son of God and Savior, but as human in nature rather than as the eternal divine Son who assumed human nature.</p>
+        <div class="match-row"><label>Closest match:</label><select class="match-select"><option value="">Choose an earlier error…</option><option value="gnosticism">Gnosticism / Docetism</option><option value="adoptionism">Adoptionism</option><option value="modalism">Modalism</option><option value="arianism">Arianism</option><option value="apollinarianism">Apollinarianism</option><option value="nestorianism">Nestorian-type division</option><option value="eutychianism">Eutychian / one-nature error</option><option value="pelagianism">Pelagian / Semi-Pelagian error</option></select><span class="match-result"></span></div>
+      </div>
+
+      <div class="match-item" data-answer="arianism">
+        <h3>Latter-day Saints (LDS)</h3>
+        <p>Jesus is identified as Jehovah and the firstborn spirit Son of Heavenly Father within a premortal family of spirit children. This is not ancient Arianism exactly, but it places the Son within a very different account of divine and premortal existence from Nicene Christianity.</p>
+        <div class="match-row"><label>Closest match:</label><select class="match-select"><option value="">Choose an earlier error…</option><option value="gnosticism">Gnosticism / Docetism</option><option value="adoptionism">Adoptionism</option><option value="modalism">Modalism</option><option value="arianism">Arianism</option><option value="apollinarianism">Apollinarianism</option><option value="nestorianism">Nestorian-type division</option><option value="eutychianism">Eutychian / one-nature error</option><option value="pelagianism">Pelagian / Semi-Pelagian error</option></select><span class="match-result"></span></div>
+      </div>
+
+      <div class="match-item" data-answer="adoptionism">
+        <h3>Unification Church</h3>
+        <p>Unification theology describes Jesus as a sinless, perfected man who became completely one with God, but not as God Himself. Its <em>Divine Principle</em> presents him as the man who fulfilled the purpose of creation and as the second Adam rather than the eternal divine Son incarnate.</p>
+        <div class="match-row"><label>Closest match:</label><select class="match-select"><option value="">Choose an earlier error…</option><option value="gnosticism">Gnosticism / Docetism</option><option value="adoptionism">Adoptionism</option><option value="modalism">Modalism</option><option value="arianism">Arianism</option><option value="apollinarianism">Apollinarianism</option><option value="nestorianism">Nestorian-type division</option><option value="eutychianism">Eutychian / one-nature error</option><option value="pelagianism">Pelagian / Semi-Pelagian error</option></select><span class="match-result"></span></div>
+      </div>
+
+
+      <div class="match-item" data-answer="adoptionism">
+        <h3>The Way International</h3>
+        <p>Jesus is confessed as God’s Son and the Messiah, but not as God. The movement distinguishes the one God, the Father, from “the man Christ Jesus,” making the closest earlier parallel the denial that the Son is the eternal divine person who became man.</p>
+        <div class="match-row"><label>Closest match:</label><select class="match-select"><option value="">Choose an earlier error…</option><option value="gnosticism">Gnosticism / Docetism</option><option value="adoptionism">Adoptionism</option><option value="modalism">Modalism</option><option value="arianism">Arianism</option><option value="apollinarianism">Apollinarianism</option><option value="nestorianism">Nestorian-type division</option><option value="eutychianism">Eutychian / one-nature error</option><option value="pelagianism">Pelagian / Semi-Pelagian error</option></select><span class="match-result"></span></div>
+      </div>
+
+      <div class="match-item" data-answer="gnosticism">
+        <h3>Unity / Unity School of Christianity</h3>
+        <p>Jesus is treated as the great example or demonstration of the universal Christ principle, while every person is understood to possess the potential for the same divine or “Christ” consciousness. This resembles older efforts to distinguish the historical Jesus from a higher spiritual Christ.</p>
+        <div class="match-row"><label>Closest match:</label><select class="match-select"><option value="">Choose an earlier error…</option><option value="gnosticism">Gnosticism / Docetism</option><option value="adoptionism">Adoptionism</option><option value="modalism">Modalism</option><option value="arianism">Arianism</option><option value="apollinarianism">Apollinarianism</option><option value="nestorianism">Nestorian-type division</option><option value="eutychianism">Eutychian / one-nature error</option><option value="pelagianism">Pelagian / Semi-Pelagian error</option></select><span class="match-result"></span></div>
+      </div>
+
+      <div class="match-item" data-answer="gnosticism">
+        <h3>A Course in Miracles</h3>
+        <p>Jesus is presented within a spiritual system in which the true Christ is a shared divine identity and the material world and separation from God are treated as ultimately unreal. The closest ancient parallel is the Gnostic tendency to replace the biblical incarnation with a higher spiritualized account of Christ and salvation.</p>
+        <div class="match-row"><label>Closest match:</label><select class="match-select"><option value="">Choose an earlier error…</option><option value="gnosticism">Gnosticism / Docetism</option><option value="adoptionism">Adoptionism</option><option value="modalism">Modalism</option><option value="arianism">Arianism</option><option value="apollinarianism">Apollinarianism</option><option value="nestorianism">Nestorian-type division</option><option value="eutychianism">Eutychian / one-nature error</option><option value="pelagianism">Pelagian / Semi-Pelagian error</option></select><span class="match-result"></span></div>
+      </div>
+
+      <div class="match-item" data-answer="modalism">
+        <h3>Swedenborgianism / The New Church</h3>
+        <p>Father, Son, and Holy Spirit are understood not as three distinct divine persons but as aspects of one divine person, Jesus Christ—often compared to soul, body, and proceeding activity. The closest earlier parallel is Modalism.</p>
+        <div class="match-row"><label>Closest match:</label><select class="match-select"><option value="">Choose an earlier error…</option><option value="gnosticism">Gnosticism / Docetism</option><option value="adoptionism">Adoptionism</option><option value="modalism">Modalism</option><option value="arianism">Arianism</option><option value="apollinarianism">Apollinarianism</option><option value="nestorianism">Nestorian-type division</option><option value="eutychianism">Eutychian / one-nature error</option><option value="pelagianism">Pelagian / Semi-Pelagian error</option></select><span class="match-result"></span></div>
+      </div>
+
+      <div class="match-item" data-answer="none">
+        <h3>Historical Armstrongism / Worldwide Church of God under Herbert W. Armstrong</h3>
+        <p>Armstrong rejected the Nicene Trinity and taught a “God family” presently consisting of the Father and the eternally existing Son, with redeemed human beings ultimately entering that divine family. Because the Son was not treated as a created being, this does not fit Arianism neatly; it is best recognized as a mixed non-Nicene system with no precise match among the earlier errors in this course.</p>
+        <div class="match-row"><label>Closest match:</label><select class="match-select"><option value="">Choose an earlier error…</option><option value="gnosticism">Gnosticism / Docetism</option><option value="adoptionism">Adoptionism</option><option value="modalism">Modalism</option><option value="arianism">Arianism</option><option value="apollinarianism">Apollinarianism</option><option value="nestorianism">Nestorian-type division</option><option value="eutychianism">Eutychian / one-nature error</option><option value="pelagianism">Pelagian / Semi-Pelagian error</option><option value="none">No precise ancient equivalent / mixed system</option></select><span class="match-result"></span></div>
+      </div>
+
+      <div class="match-item" data-answer="adoptionism">
+        <h3>Unitarian Christianity</h3>
+        <p>In its classic non-Trinitarian forms, Jesus is honored as Messiah, Son of God, teacher, or uniquely exalted man, but is not identified as the eternal God the Son who shares the divine being of the Father. The closest earlier parallel is Dynamic Monarchianism / Adoptionism.</p>
+        <div class="match-row"><label>Closest match:</label><select class="match-select"><option value="">Choose an earlier error…</option><option value="gnosticism">Gnosticism / Docetism</option><option value="adoptionism">Adoptionism</option><option value="modalism">Modalism</option><option value="arianism">Arianism</option><option value="apollinarianism">Apollinarianism</option><option value="nestorianism">Nestorian-type division</option><option value="eutychianism">Eutychian / one-nature error</option><option value="pelagianism">Pelagian / Semi-Pelagian error</option></select><span class="match-result"></span></div>
+      </div>
+    </div>
+
+    <div class="match-actions">
+      <button class="primary" onclick="checkMatches()">Check My Answers</button>
+      <button class="back-button" onclick="resetMatches()">Reset</button>
+      <span id="match-score" class="score-box"></span>
+    </div>
+
+    <div class="thesis"><strong>The point of the exercise:</strong> false teaching rarely announces itself by abandoning every Christian word. It often keeps words such as <em>Jesus</em>, <em>Christ</em>, <em>Son of God</em>, or <em>salvation</em> while changing what those words mean. The creeds train us to ask the biblical questions that expose the difference.</div>
+  </section>
+
 
   <footer>TheChristianCreeds.com · Learn the false teaching. Read the creed. Return to Scripture.</footer>
 </div>
 
 <script>
-const order=['jerusalem','gnosticism','apostles','adoptionism','modalism','arianism','apollinaris','nestorius','eutyches','orange'];
+const order=['jerusalem','gnosticism','apostles','adoptionism','modalism','arianism','apollinaris','nestorius','eutyches','orange','application'];
 
 function Home(){
-  showIntro();
+  showHome();
 }
 
 function Intro(){
@@ -831,10 +996,41 @@ function showPanel(name){
   }
 }
 
+
+
+function checkMatches(){
+  const items=[...document.querySelectorAll('#panel-application .match-item')];
+  let correct=0;
+  items.forEach(item=>{
+    const select=item.querySelector('.match-select');
+    const result=item.querySelector('.match-result');
+    if(!select.value){
+      result.textContent='Choose one';
+      result.className='match-result incorrect';
+      return;
+    }
+    if(select.value===item.dataset.answer){
+      correct++;
+      result.textContent='✓ Correct';
+      result.className='match-result correct';
+    }else{
+      result.textContent='✗ Try again';
+      result.className='match-result incorrect';
+    }
+  });
+  document.getElementById('match-score').textContent=`Score: ${correct} / ${items.length}`;
+}
+
+function resetMatches(){
+  document.querySelectorAll('#panel-application .match-select').forEach(s=>s.value='');
+  document.querySelectorAll('#panel-application .match-result').forEach(r=>{r.textContent='';r.className='match-result';});
+  document.getElementById('match-score').textContent='';
+}
+
 window.addEventListener('load',()=>{
   const hash=location.hash.replace('#','');
   if(order.includes(hash)) showPanel(hash);
-  else if(hash==='creeds') showIntro();
+  else if(hash==='creeds') showHome();
   else showIntro();
 });
 </script>
