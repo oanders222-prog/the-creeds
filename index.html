@@ -462,7 +462,7 @@
     <h2>Believing in Jesus Means Believing in the Biblical Jesus</h2>
 
     <div class="intro-scripture">
-      <strong>Ephesians 1:13–15 gives us a simple biblical picture of the Christian life:</strong> Christians hear the word of truth, believe in the Lord Jesus, and their faith is made visible in love for the saints. Christian faith is therefore not merely using the name “Jesus.” It is believing in the Jesus revealed in Scripture and living a life consistent with that faith.
+      <strong>In 1 Corinthians 2:2, Paul says "For I determined not to know anything among you except Jesus Christ and Him crucified." What does the Bible say about who Jesus is and why he was crucified?</strong> Christian faith is not merely using the name “Jesus.” It is believing in the Jesus revealed in Scripture and living a life consistent with that faith.
     </div>
 
     <div class="intro-copy">
@@ -487,11 +487,12 @@
     </div>
 
     <div class="intro-start">
-      <button class="primary" onclick="showHome()">Explore the Christian Creeds →</button>
+      <button class="primary" onclick="showIntro()">Explore the Christian Creeds →</button>
     </div>
   </main>
 
   <main id="home" class="home-card" style="display:none">
+    <div class="top-actions"><button class="back-button" onclick="Intro()">← Back to Intro</button></div>
     <div class="prompt">The Biblical Creeds</div>
     <p class="lede">
       The great Christian creeds address false teaching that arose over the centuries. Insofar as the creeds are true, they are the faithful application of the Bible to refute false doctrine and explain the truth about God and Christ. Christians confessed what the apostles taught in Scripture: one God, Jesus Christ his Son, the incarnation, the cross, the resurrection, the Holy Spirit, and the hope of the resurrection. But new teachers repeatedly used familiar Christian words while changing their meaning. That continues to be a hallmark of cults in our day. Each controversy therefore raised sharper questions: <em>Who exactly is Jesus? How is he related to the Father? Is he truly God? Is he truly man? Is he one person or two? Does he have one nature or two? Many, if not all, of the cults that have developed in the United States are simply reviving one of the false teachings already refuted by the creeds, which are grounded in the Bible.</em>
@@ -525,7 +526,7 @@
   </main>
 
   <section id="panel-jerusalem" class="panel">
-    <div class="top-actions"><button class="back-button" onclick="Home()">← Home</button><button class="home-button" onclick="Panel('gnosticism')">Next Challenge →</button></div>
+    <div class="top-actions"><button class="back-button" onclick="Intro()">← Home</button><button class="home-button" onclick="Panel('gnosticism')">Next Challenge →</button></div>
     <div class="stage-label">Stage 1 — The Apostolic Council</div> 
     <h2>The Council of Jerusalem, c. AD 50.</h3><p>This council gives the inspired pattern for all later councils and is an important part of showing how the New Testament establishes a presbyterian government.</h2>
     <p class="question">Must a person receive circumcision and keep the law of Moses in order to be saved?</p>
@@ -568,7 +569,7 @@
   </section>
 
   <section id="panel-apostles" class="panel">
-    <div class="top-actions"><button class="back-button" onclick="showPanel('gnosticism')">← Challenge</button><button class="home-button" onclick="showHome()">Home</button></div>
+    <div class="top-actions"><button class="back-button" onclick="showPanel('gnosticism')">← Challenge</button><button class="home-button" onclick="showIntro()">Home</button></div>
     <div class="progress"><span class="on"></span><span class="on"></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
     <div class="stage-label">Creedal Reply 1</div>
     <h2>The Apostles' Creed</h2>
@@ -600,7 +601,7 @@
   </section>
 
   <section id="panel-adoptionism" class="panel">
-    <div class="top-actions"><button class="back-button" onclick="showPanel('apostles')">← Previous</button><button class="home-button" onclick="showHome()">Home</button></div>
+    <div class="top-actions"><button class="back-button" onclick="showPanel('apostles')">← Previous</button><button class="home-button" onclick="showIntro()">Home</button></div>
     <div class="progress"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span><span></span><span></span><span></span></div>
     <div class="stage-label">Challenge 2</div>
     <h2>Dynamic Monarchianism / Adoptionism</h2>
@@ -615,7 +616,7 @@
   </section>
 
   <section id="panel-modalism" class="panel">
-    <div class="top-actions"><button class="back-button" onclick="showPanel('adoptionism')">← Previous</button><button class="home-button" onclick="showHome()">Home</button></div>
+    <div class="top-actions"><button class="back-button" onclick="showPanel('adoptionism')">← Previous</button><button class="home-button" onclick="showIntro()">Home</button></div>
     <div class="progress"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span><span></span><span></span></div>
     <div class="stage-label">Challenge 3</div>
     <h2>Modalistic Monarchianism</h2>
@@ -630,7 +631,7 @@
   </section>
 
   <section id="panel-arianism" class="panel">
-    <div class="top-actions"><button class="back-button" onclick="showPanel('modalism')">← Previous</button><button class="home-button" onclick="showHome()">Home</button></div>
+    <div class="top-actions"><button class="back-button" onclick="showPanel('modalism')">← Previous</button><button class="home-button" onclick="showIntro()">Home</button></div>
     <div class="progress"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div>
     <div class="stage-label">Challenge 4</div>
     <h2>Arianism</h2>
@@ -659,7 +660,7 @@
   </section>
 
   <section id="panel-apollinaris" class="panel">
-    <div class="top-actions"><button class="back-button" onclick="showPanel('arianism')">← Previous</button><button class="home-button" onclick="showHome()">Home</button></div>
+    <div class="top-actions"><button class="back-button" onclick="showPanel('arianism')">← Previous</button><button class="home-button" onclick="showIntro()">Home</button></div>
     <div class="progress"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></div>
     <div class="stage-label">Challenge 5</div>
     <h2>Apollinarianism</h2>
@@ -687,7 +688,7 @@
   </section>
 
   <section id="panel-nestorius" class="panel">
-    <div class="top-actions"><button class="back-button" onclick="showPanel('apollinaris')">← Previous</button><button class="home-button" onclick="showHome()">Home</button></div>
+    <div class="top-actions"><button class="back-button" onclick="showPanel('apollinaris')">← Previous</button><button class="home-button" onclick="showIntro()">Home</button></div>
     <div class="progress"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div>
     <div class="stage-label">Challenge 6</div>
     <h2>The Nestorian Controversy</h2>
@@ -707,7 +708,7 @@
   </section>
 
   <section id="panel-eutyches" class="panel">
-    <div class="top-actions"><button class="back-button" onclick="showPanel('nestorius')">← Previous</button><button class="home-button" onclick="showHome()">Home</button></div>
+    <div class="top-actions"><button class="back-button" onclick="showPanel('nestorius')">← Previous</button><button class="home-button" onclick="showIntro()">Home</button></div>
     <div class="progress"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div>
     <div class="stage-label">Challenge 7 and Creedal Synthesis</div>
     <h2>Eutyches, Monophysite Controversy, and Chalcedon</h2>
@@ -739,7 +740,7 @@
   </section>
 
   <section id="panel-orange" class="panel">
-    <div class="top-actions"><button class="back-button" onclick="showPanel('eutyches')">← Chalcedon</button><button class="home-button" onclick="showHome()">Home</button></div>
+    <div class="top-actions"><button class="back-button" onclick="showPanel('eutyches')">← Chalcedon</button><button class="home-button" onclick="showIntro()">Home</button></div>
     <div class="stage-label">Stage 9 — Grace and the Will</div>
     <h2>The Second Council of Orange, AD 529</h2>
     <p class="question">Does fallen man initiate his return to God by free will, with grace arriving afterward — or does God’s grace precede and produce even the good movement of the will?</p>
@@ -780,7 +781,7 @@
 
     <p class="keyline">We do not first will the good and thereby obtain grace; grace precedes and prepares the will to will the good.</p>
 
-    <div class="next-card"><p><strong>Return to the beginning</strong> and walk the whole chain again: the identity of Christ, the two natures, and finally the sovereign grace by which fallen sinners are brought to faith.</p><button class="next-button" onclick="showHome()">Return Home ↺</button></div>
+    <div class="next-card"><p><strong>Return to the beginning</strong> and walk the whole chain again: the identity of Christ, the two natures, and finally the sovereign grace by which fallen sinners are brought to faith.</p><button class="next-button" onclick="showIntro()">Return Home ↺</button></div>
     <p class="source-note">For the full 25 canons and conclusion, see the historical text of the <a href="https://www.reformedhistory.com/Content/Councils/Orange2" target="_blank" rel="noopener">Second Council of Orange (529)</a>.</p>
   </section>
 
@@ -791,7 +792,7 @@
 const order=['jerusalem','gnosticism','apostles','adoptionism','modalism','arianism','apollinaris','nestorius','eutyches','orange'];
 
 function Home(){
-  showHome();
+  showIntro();
 }
 
 function Intro(){
@@ -833,7 +834,7 @@ function showPanel(name){
 window.addEventListener('load',()=>{
   const hash=location.hash.replace('#','');
   if(order.includes(hash)) showPanel(hash);
-  else if(hash==='creeds') showHome();
+  else if(hash==='creeds') showIntro();
   else showIntro();
 });
 </script>
