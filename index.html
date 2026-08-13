@@ -371,6 +371,64 @@
     line-height:1.55;
   }
 
+
+  .intro-card{
+    width:min(900px,96vw);
+    margin:34px auto 0;
+    background:rgba(255,253,248,.97);
+    border:1px solid var(--border);
+    border-radius:24px;
+    box-shadow:var(--shadow);
+    padding:42px 38px 44px;
+  }
+
+  .intro-card h2{
+    margin:0;
+    color:var(--navy);
+    font-size:clamp(2rem,4.5vw,3.35rem);
+    line-height:1.08;
+    text-align:center;
+  }
+
+  .intro-copy{
+    max-width:790px;
+    margin:24px auto 0;
+    color:#3f4b56;
+    font-size:1.14rem;
+    line-height:1.78;
+  }
+
+  .intro-copy p{margin:0 0 18px}
+
+  .intro-scripture{
+    margin:26px auto 0;
+    max-width:790px;
+    padding:22px 24px;
+    background:#edf2f5;
+    border-left:5px solid var(--navy2);
+    border-radius:14px;
+    color:#36434f;
+    line-height:1.7;
+    font-size:1.05rem;
+  }
+
+  .intro-scripture strong{color:var(--navy)}
+
+  .intro-contrast{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin:26px auto 0;
+    max-width:790px;
+  }
+
+  .intro-contrast .box{margin:0}
+
+  .intro-start{
+    text-align:center;
+    margin-top:30px;
+  }
+
   footer{
     text-align:center;
     color:#7a746a;
@@ -384,8 +442,8 @@
 
   @media(max-width:680px){
     .wrap{padding-top:22px}
-    .home-card,.panel{padding:25px 20px 29px;border-radius:18px}
-    .columns,.canon-grid{grid-template-columns:1fr}
+    .home-card,.panel,.intro-card{padding:25px 20px 29px;border-radius:18px}
+    .columns,.canon-grid,.intro-contrast{grid-template-columns:1fr}
     .path{grid-template-columns:1fr}
     .next-card{align-items:flex-start;flex-direction:column}
   }
@@ -395,11 +453,45 @@
 <div class="wrap">
   <header>
     <div class="eyebrow">TheChristianCreeds.com</div>
-    <h1 onclick="Home()">The Christian Creeds</h1>
+    <h1 onclick="Intro()">The Christian Creeds</h1>
     <p class="subtitle">Why do Christians need creeds? Follow the challenges to biblical Christianity that occasioned the writing of the creeds to express the truths of the Bible about the Trinity and the person and work of Christ. The creeds are not equal to or above Scripture. They are meant to be expressions of what Scripture teaches as the church responds to theological challenges. That means the creeds are evaluated by their consistency with the Bible.</p>
   </header>
 
-  <main id="home" class="home-card">
+  <main id="intro" class="intro-card">
+    <div class="prompt">Who is a Christian?</div>
+    <h2>Believing in Jesus Means Believing in the Biblical Jesus</h2>
+
+    <div class="intro-scripture">
+      <strong>Ephesians 1:13–15 gives us a simple biblical picture of the Christian life:</strong> Christians hear the word of truth, believe in the Lord Jesus, and their faith is made visible in love for the saints. Christian faith is therefore not merely using the name “Jesus.” It is believing in the Jesus revealed in Scripture and living a life consistent with that faith.
+    </div>
+
+    <div class="intro-copy">
+      <p>There are those who simply do not believe in Jesus. But Scripture also warns about another kind of danger: wolves and heretics who claim the name of Christ while changing his identity and teaching. They may say that they believe in Jesus, but the “Jesus” they describe is no longer the Jesus revealed in the Bible. They replace the biblical Christ with a Christ of their own imagination.</p>
+
+      <p>This problem is not new. The earliest Christians faced teachers who used familiar Christian words while changing their meaning. Some denied that Jesus truly became man. Others taught that he was only a man who later became divine, that he was the highest created being, or that his divine and human natures could not both remain complete in one person.</p>
+
+      <p>The Christian creeds grew out of these controversies. The church did not invent a new Jesus. Christians returned to the Bible, examined what Scripture teaches, and stated its teaching with increasing clarity and precision. The creeds were written to expose false teaching and to confess more clearly who the biblical Jesus is.</p>
+
+      <p>This website is designed to help you follow that process. You will see the false teaching, examine the relevant biblical texts, and then read the creed or council that answered the error. The goal is not to place creeds above Scripture, but to help you understand how Christians have used Scripture to identify error and to build faith on the firm foundation of the Bible’s teaching about Jesus Christ.</p>
+    </div>
+
+    <div class="intro-contrast">
+      <div class="box challenge">
+        <h3>The Danger</h3>
+        <p>A person can use Christian words while quietly changing their biblical meaning. Saying “I believe in Jesus” is not enough if “Jesus” has been redefined.</p>
+      </div>
+      <div class="box reply">
+        <h3>The Foundation</h3>
+        <p>The answer is to return to Scripture and ask: Who does the Bible say Jesus is? The historic creeds help us see how Christians answered that question.</p>
+      </div>
+    </div>
+
+    <div class="intro-start">
+      <button class="primary" onclick="showHome()">Explore the Christian Creeds →</button>
+    </div>
+  </main>
+
+  <main id="home" class="home-card" style="display:none">
     <div class="prompt">The Biblical Creeds</div>
     <p class="lede">
       The great Christian creeds address false teaching that arose over the centuries. Insofar as the creeds are true, they are the faithful application of the Bible to refute false doctrine and explain the truth about God and Christ. Christians confessed what the apostles taught in Scripture: one God, Jesus Christ his Son, the incarnation, the cross, the resurrection, the Holy Spirit, and the hope of the resurrection. But new teachers repeatedly used familiar Christian words while changing their meaning. That continues to be a hallmark of cults in our day. Each controversy therefore raised sharper questions: <em>Who exactly is Jesus? How is he related to the Father? Is he truly God? Is he truly man? Is he one person or two? Does he have one nature or two? Many, if not all, of the cults that have developed in the United States are simply reviving one of the false teachings already refuted by the creeds, which are grounded in the Bible.</em>
@@ -702,17 +794,32 @@ function Home(){
   showHome();
 }
 
+function Intro(){
+  showIntro();
+}
+
 function Panel(name){
   showPanel(name);
 }
 
+function showIntro(){
+  document.getElementById('intro').style.display='block';
+  document.getElementById('home').style.display='none';
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  history.replaceState(null,'',location.pathname);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
 function showHome(){
+  document.getElementById('intro').style.display='none';
   document.getElementById('home').style.display='block';
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  history.replaceState(null,'','#creeds');
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function showPanel(name){
+  document.getElementById('intro').style.display='none';
   document.getElementById('home').style.display='none';
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
   const panel=document.getElementById('panel-'+name);
@@ -726,6 +833,8 @@ function showPanel(name){
 window.addEventListener('load',()=>{
   const hash=location.hash.replace('#','');
   if(order.includes(hash)) showPanel(hash);
+  else if(hash==='creeds') showHome();
+  else showIntro();
 });
 </script>
 </body>
